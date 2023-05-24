@@ -1,0 +1,11 @@
+[
+  { "min": 0, "max": 0, "label": "Immediate" },
+  { "min": 1, "max": 4, "label": "Extremely Fast" },
+  { "min": 5, "max": 14, "label": "Fast" },
+  { "min": 15, "max": 29, "label": "Average" },
+  { "min": 30, "max": 39, "label": "Slow" },
+  { "min": 40, "max": 59, "label": "Very Slow" },
+  { "min": 60, "max": 79, "label": "Extremely Slow" },
+  { "min": 80, "max": 120, "label": "Legendary" },
+  { "min": 121, "max": 255, "label": "Agonizing" }
+]

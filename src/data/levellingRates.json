@@ -1,0 +1,32 @@
+[
+  {
+    "value": "erratic",
+    "label": "Erratic",
+    "description": "Slow in lower levels, increase rate of growth at higher levels. 600k experience to level 100."
+  },
+  {
+    "value": "fast",
+    "label": "Fast",
+    "description": "800k experience to level 100."
+  },
+  {
+    "value": "medium_fast",
+    "label": "Medium Fast",
+    "description": "1m experience to level 100."
+  },
+  {
+    "value": "medium_slow",
+    "label": "Medium Slow",
+    "description": "1,059,860 experience to level 100."
+  },
+  {
+    "value": "slow",
+    "label": "Slow",
+    "description": "1.25m experience to level 100."
+  },
+  {
+    "value": "fluctuating",
+    "label": "Fluctuating",
+    "description": "Follows a weird sinusoidal growth after level 36. 1.64m experience to level 100."
+  }
+]

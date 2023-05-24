@@ -1,0 +1,31 @@
+{
+  "name": "cobblemon-fakemon-generator",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/react": "11.10.6",
+    "@mantine/core": "6.0.5",
+    "@mantine/form": "6.0.5",
+    "@mantine/hooks": "6.0.5",
+    "@tabler/icons-react": "2.11.0",
+    "downloadfile-js": "https://github.com/tmetcalfe89/downloadfile-js",
+    "loader-utils": "3.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
