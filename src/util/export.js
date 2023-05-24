@@ -1,5 +1,5 @@
 function shakeUndefineds(obj) {
-  return JSON.parse(JSON.stringify(obj));
+  return JSON.stringify(obj, null, 2);
 }
 
 export function exportToCobblemon(data) {
@@ -11,7 +11,7 @@ export function exportToCobblemon(data) {
     secondaryType: data.types[1],
     abilities: [
       ...data.abilities,
-      data.hiddenAbility ? `h:${data.hiddenAbility}` : undefined
+      data.hiddenAbility ? `h:${data.hiddenAbility}` : undefined,
     ],
     baseStats: {
       hp: data.hp,
@@ -19,27 +19,27 @@ export function exportToCobblemon(data) {
       defence: data.defense,
       special_attack: data.specialAttack,
       special_defence: data.specialDefense,
-      speed: data.speed
+      speed: data.speed,
     },
     behaviour: {
       resting: {
         canSleep: true,
         depth: "normal",
-        light: "0-4"
+        light: "0-4",
       },
       moving: {
         canLook: false,
         walk: {
           canWalk: true,
-          avoidsLand: false
+          avoidsLand: false,
         },
         swim: {
           swimSpeed: 0.1,
           canSwimInWater: true,
-          canBreatheUnderwater: false
+          canBreatheUnderwater: false,
         },
-        wanderChance: 1
-      }
+        wanderChance: 1,
+      },
     },
     catchRate: data.catchRate,
     maleRatio: data.genderRatio / 100,
@@ -54,14 +54,14 @@ export function exportToCobblemon(data) {
     labels: ["custom"],
     pokedex: [
       `cobblemon.species.${data.name}.desc1`,
-      `cobblemon.species.${data.name}.desc2`
+      `cobblemon.species.${data.name}.desc2`,
     ],
 
     baseScale: 1.0,
     hitbox: {
       width: 1.0,
       height: 1.0,
-      fixed: false
+      fixed: false,
     },
     baseFriendship: 50,
     evYield: {
@@ -70,9 +70,9 @@ export function exportToCobblemon(data) {
       defence: data.evDefense,
       special_attack: data.evSpecialAttack,
       special_defence: data.evSpecialDefense,
-      speed: data.evSpeed
+      speed: data.evSpeed,
     },
     height: 1,
-    weight: 1
+    weight: 1,
   });
 }

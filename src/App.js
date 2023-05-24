@@ -9,7 +9,7 @@ import {
   Checkbox,
   Title,
   NumberInput,
-  Button
+  Button,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { IconGenderMale, IconGenderFemale } from "@tabler/icons-react";
@@ -18,9 +18,11 @@ import SelectedItem from "./components/SelectedItem";
 import SelectItem from "./components/SelectItem";
 import usePokeData from "./data/usePokeData";
 import { useCallback, useEffect, useState } from "react";
-import { camelCase } from "./util/string";
+import { camelCase, lowercaseAlpha } from "./util/string";
 import EvSlider from "./components/EvSlider";
 import StatSlider from "./components/StatSlider";
+import downloadFile from "downloadfile-js";
+import { exportToCobblemon } from "./util/export";
 
 export default function App() {
   const [disableStatLookup, setDisableStatLookup] = useState(false);
@@ -34,40 +36,44 @@ export default function App() {
     eggGroups,
     pokemon,
     getPokemonStats,
-    levellingRates
+    levellingRates,
   } = usePokeData();
 
-  const { getInputProps, values, setValues, onSubmit } = useForm({
-    initialValues: {
-      name: "",
-      types: [],
-      abilities: [],
-      hiddenAbility: "",
-      catchRate: 150,
-      hatchRate: 25,
-      genderRatio: 50,
-      genderless: false,
-      eggGroups: [],
-      hp: 1,
-      attack: 1,
-      defense: 1,
-      specialAttack: 1,
-      specialDefense: 1,
-      speed: 1,
-      evHp: 0,
-      evAttack: 0,
-      evDefense: 0,
-      evSpecialAttack: 0,
-      evSpecialDefense: 0,
-      evSpeed: 0,
-      evoStage: 1,
-      experienceYield: 100
-    },
-    validate: {
-      name: (v) => (v.length === 0 ? "Required" : null),
-      types: (v) => (v.length === 0 ? "Required" : null)
+  const { getInputProps, values, setValues, onSubmit, setFieldValue } = useForm(
+    {
+      initialValues: {
+        name: "",
+        types: [],
+        abilities: [],
+        hiddenAbility: "",
+        catchRate: 150,
+        hatchRate: 25,
+        genderRatio: 50,
+        genderless: false,
+        eggGroups: [],
+        hp: 1,
+        attack: 1,
+        defense: 1,
+        specialAttack: 1,
+        specialDefense: 1,
+        speed: 1,
+        evHp: 0,
+        evAttack: 0,
+        evDefense: 0,
+        evSpecialAttack: 0,
+        evSpecialDefense: 0,
+        evSpeed: 0,
+        evoStage: 1,
+        experienceYield: 100,
+      },
+      validate: {
+        name: (v) => (v.length === 0 ? "Required" : null),
+        types: (v) => (v.length === 0 ? "Required" : null),
+        abilities: (v) => (v.length === 0 ? "Required" : null),
+        eggGroups: (v) => (v.length === 0 ? "Required" : null),
+      },
     }
-  });
+  );
 
   const handleStatLookup = useCallback(
     async (value) => {
@@ -80,7 +86,7 @@ export default function App() {
   );
 
   const handleDownload = useCallback((values) => {
-    console.log(values);
+    downloadFile(exportToCobblemon(values), `${values.name}.json`);
   }, []);
 
   useEffect(() => {
@@ -92,7 +98,7 @@ export default function App() {
       defense: values.defense,
       specialAttack: values.specialAttack,
       specialDefense: values.specialDefense,
-      speed: values.speed
+      speed: values.speed,
     };
     const sorted = Object.entries(stats)
       .sort(([_n1, v1], [_n2, v2]) => v2 - v1)
@@ -106,7 +112,7 @@ export default function App() {
                   ? Math.ceil(values.evoStage / 2)
                   : Math.floor(values.evoStage / 2)
                 : values.evoStage
-              : 0
+              : 0,
         }),
         {}
       );
@@ -121,7 +127,7 @@ export default function App() {
     values.specialAttack,
     values.specialDefense,
     values.speed,
-    values.evoStage
+    values.evoStage,
   ]);
 
   return (
@@ -132,7 +138,13 @@ export default function App() {
     >
       <Group align="start" grow sx={{ flexGrow: 1 }}>
         <Stack>
-          <TextInput label="Name" {...getInputProps("name")} />
+          <TextInput
+            label="Name"
+            {...getInputProps("name")}
+            onChange={(e) =>
+              setFieldValue("name", lowercaseAlpha(e.target.value))
+            }
+          />
           <MultiSelect
             label="Types"
             data={types}
@@ -232,7 +244,7 @@ export default function App() {
             label="Copy Existing"
             data={pokemon.map((e) => ({
               value: e.name,
-              label: e.name
+              label: e.name,
             }))}
             searchable
             disabled={disableStatLookup}

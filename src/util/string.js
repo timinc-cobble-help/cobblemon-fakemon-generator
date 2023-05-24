@@ -15,3 +15,7 @@ export function capitalize(str) {
       )
   );
 }
+
+export function lowercaseAlpha(str) {
+  return str.toLowerCase().replace(/[^a-z]/g, "");
+}

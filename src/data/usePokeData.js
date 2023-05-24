@@ -21,7 +21,7 @@ export default function usePokeData() {
       setAbilities(
         data.results.map((e) => ({
           value: e.name.replace("-", ""),
-          label: capitalize(e.name)
+          label: capitalize(e.name),
         }))
       );
     }
@@ -32,7 +32,9 @@ export default function usePokeData() {
     async function fetchEggGroups() {
       const response = await fetch("https://pokeapi.co/api/v2/egg-group");
       const data = await response.json();
-      setEggGroups(data.results.map((e) => ({ value: e.name, label: e.name })));
+      setEggGroups(
+        data.results.map((e) => ({ value: e.name, label: capitalize(e.name) }))
+      );
     }
     fetchEggGroups();
   }, []);
@@ -52,7 +54,7 @@ export default function usePokeData() {
     () =>
       types1.map((type1) => ({
         ...type1,
-        ...types2.find((type2) => type2.label === type1.label)
+        ...types2.find((type2) => type2.label === type1.label),
       })),
     []
   );
@@ -68,7 +70,7 @@ export default function usePokeData() {
       const stats = data.stats.reduce(
         (acc, { base_stat, stat: { name } }) => ({
           ...acc,
-          [camelCase(name)]: base_stat
+          [camelCase(name)]: base_stat,
         }),
         {}
       );
@@ -86,6 +88,6 @@ export default function usePokeData() {
     eggGroups,
     pokemon,
     getPokemonStats,
-    levellingRates
+    levellingRates,
   };
 }
