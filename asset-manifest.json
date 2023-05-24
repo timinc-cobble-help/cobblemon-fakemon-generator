@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/cobblemon-fakemon-generator/static/css/main.7a916821.css",
-    "main.js": "/cobblemon-fakemon-generator/static/js/main.be2b99cc.js",
+    "main.js": "/cobblemon-fakemon-generator/static/js/main.a743cd12.js",
     "index.html": "/cobblemon-fakemon-generator/index.html",
     "main.7a916821.css.map": "/cobblemon-fakemon-generator/static/css/main.7a916821.css.map",
-    "main.be2b99cc.js.map": "/cobblemon-fakemon-generator/static/js/main.be2b99cc.js.map"
+    "main.a743cd12.js.map": "/cobblemon-fakemon-generator/static/js/main.a743cd12.js.map"
   },
   "entrypoints": [
     "static/css/main.7a916821.css",
-    "static/js/main.be2b99cc.js"
+    "static/js/main.a743cd12.js"
   ]
 }
