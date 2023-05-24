@@ -42,7 +42,7 @@ export function exportToCobblemon(data) {
       },
     },
     catchRate: data.catchRate,
-    maleRatio: data.genderRatio / 100,
+    maleRatio: data.genderless ? -1 : data.genderRatio / 100,
     shoulderMountable: false,
 
     baseExperienceYield: data.experienceYield,
