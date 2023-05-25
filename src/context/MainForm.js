@@ -120,7 +120,7 @@ export function MainFormProvider({ children }) {
     (keys) => {
       return keys.reduce(
         (acc, key) =>
-          errors[key] ? [...acc, { key, error: errors[key] }] : [],
+          errors[key] ? [...acc, { key, error: errors[key] }] : acc,
         []
       );
     },
