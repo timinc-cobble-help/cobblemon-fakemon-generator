@@ -22,8 +22,8 @@ export function MainFormProvider({ children }) {
     levellingRates,
   } = usePokeData();
 
-  const { getInputProps, values, setValues, onSubmit, setFieldValue } = useForm(
-    {
+  const { getInputProps, values, setValues, onSubmit, setFieldValue, errors } =
+    useForm({
       initialValues: {
         name: "",
         types: [],
@@ -55,8 +55,7 @@ export function MainFormProvider({ children }) {
         abilities: (v) => (v.length === 0 ? "Required" : null),
         eggGroups: (v) => (v.length === 0 ? "Required" : null),
       },
-    }
-  );
+    });
 
   const autoCalculatedEvYields = useMemo(() => {
     const stats = {
@@ -117,6 +116,17 @@ export function MainFormProvider({ children }) {
     [autoCalculate, autoCalculatedEvYields]
   );
 
+  const getPoolOfErrors = useCallback(
+    (keys) => {
+      return keys.reduce(
+        (acc, key) =>
+          errors[key] ? [...acc, { key, error: errors[key] }] : [],
+        []
+      );
+    },
+    [errors]
+  );
+
   return (
     <MainFormContext.Provider
       value={{
@@ -138,6 +148,7 @@ export function MainFormProvider({ children }) {
         setAutoCalculate,
         setSplitAutoCalc,
         setFieldValue,
+        getPoolOfErrors,
       }}
     >
       {children}
