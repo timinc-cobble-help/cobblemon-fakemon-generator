@@ -122,14 +122,17 @@ export default function App() {
     [getPokemonStats, setValues]
   );
 
-  const handleDownload = useCallback((values) => {
-    downloadFile(
-      exportToCobblemon(
-        autoCalculate ? { ...values, ...autoCalculatedEvYields } : values
-      ),
-      `${values.name}.json`
-    );
-  }, []);
+  const handleDownload = useCallback(
+    (values) => {
+      const data = autoCalculate
+        ? { ...values, ...autoCalculatedEvYields }
+        : values;
+      const exportData = exportToCobblemon(data);
+      console.log(data, JSON.parse(exportData));
+      downloadFile(exportData, `${values.name}.json`);
+    },
+    [autoCalculate, autoCalculatedEvYields]
+  );
 
   return (
     <Stack
