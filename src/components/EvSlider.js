@@ -1,6 +1,12 @@
 import Slider from "./TSlider";
 
-export default function EvSlider({ statName, disabled, ...props }) {
+export default function EvSlider({
+  statName,
+  disabled,
+  calcedValue,
+  inputProps,
+  ...props
+}) {
   return (
     <Slider
       title={statName}
@@ -8,6 +14,7 @@ export default function EvSlider({ statName, disabled, ...props }) {
       min={0}
       max={3}
       disabled={disabled}
+      {...(disabled ? { value: calcedValue } : inputProps)}
       {...props}
     />
   );
