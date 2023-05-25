@@ -20,42 +20,53 @@ export function MainFormProvider({ children }) {
     pokemon,
     getPokemonStats,
     levellingRates,
+    moves,
+    moveLearnTypes,
   } = usePokeData();
 
-  const { getInputProps, values, setValues, onSubmit, setFieldValue, errors } =
-    useForm({
-      initialValues: {
-        name: "",
-        types: [],
-        abilities: [],
-        hiddenAbility: "",
-        catchRate: 150,
-        hatchRate: 25,
-        genderRatio: 50,
-        genderless: false,
-        eggGroups: [],
-        hp: 1,
-        attack: 1,
-        defense: 1,
-        specialAttack: 1,
-        specialDefense: 1,
-        speed: 1,
-        evHp: 0,
-        evAttack: 0,
-        evDefense: 0,
-        evSpecialAttack: 0,
-        evSpecialDefense: 0,
-        evSpeed: 0,
-        evoStage: 1,
-        experienceYield: 100,
-      },
-      validate: {
-        name: (v) => (v.length === 0 ? "Required" : null),
-        types: (v) => (v.length === 0 ? "Required" : null),
-        abilities: (v) => (v.length === 0 ? "Required" : null),
-        eggGroups: (v) => (v.length === 0 ? "Required" : null),
-      },
-    });
+  const {
+    getInputProps,
+    values,
+    setValues,
+    onSubmit,
+    setFieldValue,
+    errors,
+    insertListItem,
+    removeListItem,
+  } = useForm({
+    initialValues: {
+      name: "",
+      types: [],
+      abilities: [],
+      hiddenAbility: "",
+      catchRate: 150,
+      hatchRate: 25,
+      genderRatio: 50,
+      genderless: false,
+      eggGroups: [],
+      hp: 1,
+      attack: 1,
+      defense: 1,
+      specialAttack: 1,
+      specialDefense: 1,
+      speed: 1,
+      evHp: 0,
+      evAttack: 0,
+      evDefense: 0,
+      evSpecialAttack: 0,
+      evSpecialDefense: 0,
+      evSpeed: 0,
+      evoStage: 1,
+      experienceYield: 100,
+      moves: [],
+    },
+    validate: {
+      name: (v) => (v.length === 0 ? "Required" : null),
+      types: (v) => (v.length === 0 ? "Required" : null),
+      abilities: (v) => (v.length === 0 ? "Required" : null),
+      eggGroups: (v) => (v.length === 0 ? "Required" : null),
+    },
+  });
 
   const autoCalculatedEvYields = useMemo(() => {
     const stats = {
@@ -149,6 +160,10 @@ export function MainFormProvider({ children }) {
         setSplitAutoCalc,
         setFieldValue,
         getPoolOfErrors,
+        insertListItem,
+        removeListItem,
+        moves,
+        moveLearnTypes,
       }}
     >
       {children}

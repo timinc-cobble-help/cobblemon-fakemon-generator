@@ -50,7 +50,11 @@ export function exportToCobblemon(data) {
     eggCycles: data.hatchRate,
     eggGroups: data.eggGroups,
 
-    // moves: ["50:rocksmash"],
+    moves: [
+      data.moves.map(
+        ({ type, level, name }) => `${type === "level" ? level : type}:${name}`
+      ),
+    ],
     labels: ["custom"],
     pokedex: [
       `cobblemon.species.${data.name}.desc1`,
