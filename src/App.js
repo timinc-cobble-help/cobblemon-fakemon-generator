@@ -17,7 +17,7 @@ import Slider from "./components/TSlider";
 import SelectedItem from "./components/SelectedItem";
 import SelectItem from "./components/SelectItem";
 import usePokeData from "./data/usePokeData";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { camelCase, lowercaseAlpha } from "./util/string";
 import EvSlider from "./components/EvSlider";
 import StatSlider from "./components/StatSlider";
@@ -75,23 +75,7 @@ export default function App() {
     }
   );
 
-  const handleStatLookup = useCallback(
-    async (value) => {
-      setDisableStatLookup(true);
-      const stats = await getPokemonStats(value);
-      setValues((prev) => ({ ...prev, ...stats }));
-      setDisableStatLookup(false);
-    },
-    [getPokemonStats, setValues]
-  );
-
-  const handleDownload = useCallback((values) => {
-    downloadFile(exportToCobblemon(values), `${values.name}.json`);
-  }, []);
-
-  useEffect(() => {
-    if (!autoCalculate) return;
-
+  const autoCalculatedEvYields = useMemo(() => {
     const stats = {
       hp: values.hp,
       attack: values.attack,
@@ -116,11 +100,9 @@ export default function App() {
         }),
         {}
       );
-    setValues((prev) => ({ ...prev, ...sorted }));
+    return sorted;
   }, [
-    autoCalculate,
     splitAutoCalc,
-    setValues,
     values.hp,
     values.attack,
     values.defense,
@@ -129,6 +111,28 @@ export default function App() {
     values.speed,
     values.evoStage,
   ]);
+
+  const handleStatLookup = useCallback(
+    async (value) => {
+      setDisableStatLookup(true);
+      const stats = await getPokemonStats(value);
+      setValues((prev) => ({ ...prev, ...stats }));
+      setDisableStatLookup(false);
+    },
+    [getPokemonStats, setValues]
+  );
+
+  const handleDownload = useCallback(
+    (values) => {
+      const data = autoCalculate
+        ? { ...values, ...autoCalculatedEvYields }
+        : values;
+      const exportData = exportToCobblemon(data);
+      console.log(data, JSON.parse(exportData));
+      downloadFile(exportData, `${values.name}.json`);
+    },
+    [autoCalculate, autoCalculatedEvYields]
+  );
 
   return (
     <Stack
@@ -263,32 +267,38 @@ export default function App() {
           <EvSlider
             statName="HP"
             disabled={autoCalculate}
-            {...getInputProps("evHp")}
+            inputProps={getInputProps("evHp")}
+            calcedValue={autoCalculatedEvYields.evHp}
           />
           <EvSlider
             statName="Attack"
             disabled={autoCalculate}
-            {...getInputProps("evAttack")}
+            inputProps={getInputProps("evAttack")}
+            calcedValue={autoCalculatedEvYields.evAttack}
           />
           <EvSlider
             statName="Defense"
             disabled={autoCalculate}
-            {...getInputProps("evDefense")}
+            inputProps={getInputProps("evDefense")}
+            calcedValue={autoCalculatedEvYields.evDefense}
           />
           <EvSlider
             statName="Special Attack"
             disabled={autoCalculate}
-            {...getInputProps("evSpecialAttack")}
+            inputProps={getInputProps("evSpecialAttack")}
+            calcedValue={autoCalculatedEvYields.evSpecialAttack}
           />
           <EvSlider
             statName="Special Defense"
             disabled={autoCalculate}
-            {...getInputProps("evSpecialDefense")}
+            inputProps={getInputProps("evSpecialDefense")}
+            calcedValue={autoCalculatedEvYields.evSpecialDefense}
           />
           <EvSlider
             statName="Speed"
             disabled={autoCalculate}
-            {...getInputProps("evSpeed")}
+            inputProps={getInputProps("evSpeed")}
+            calcedValue={autoCalculatedEvYields.evSpeed}
           />
           <Checkbox
             label="Auto-Calculate"
