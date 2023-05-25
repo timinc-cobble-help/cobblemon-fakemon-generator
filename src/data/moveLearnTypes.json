@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Level",
+    "value": "level",
+    "description": "Learned on levelling up to a given level."
+  },
+  {
+    "label": "TM",
+    "value": "tm",
+    "description": "Learned via Technical Machine."
+  },
+  {
+    "label": "Egg",
+    "value": "egg",
+    "description": "Learned from a parent via breeding."
+  },
+  {
+    "label": "Tutor",
+    "value": "tutor",
+    "description": "Learned from a tutor."
+  }
+]

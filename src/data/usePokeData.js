@@ -4,6 +4,8 @@ import types2 from "./types2.json";
 import catchRates from "./catchRates.json";
 import hatchRates from "./hatchRates.json";
 import levellingRates from "./levellingRates.json";
+import rawMoves from "./moves.json";
+import moveLearnTypes from "./moveLearnTypes.json";
 import { camelCase, capitalize } from "../util/string";
 
 export default function usePokeData() {
@@ -59,6 +61,16 @@ export default function usePokeData() {
     []
   );
 
+  const moves = useMemo(
+    () =>
+      rawMoves.map(({ type, ...props }) => ({
+        ...props,
+        image: types1.find((type1) => type1.label === type).image,
+        color: types2.find((type2) => type2.label === type).color,
+      })),
+    []
+  );
+
   const getPokemonStats = useCallback(
     async (pokemonName) => {
       if (cachedStats[pokemonName]) return cachedStats[pokemonName];
@@ -89,5 +101,7 @@ export default function usePokeData() {
     pokemon,
     getPokemonStats,
     levellingRates,
+    moves,
+    moveLearnTypes,
   };
 }
