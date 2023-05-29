@@ -23,27 +23,29 @@ export function exportToCobblemon(data) {
     },
     behaviour: {
       resting: {
-        canSleep: true,
+        canSleep: data.canFallAsleep,
         depth: "normal",
-        light: "0-4",
+        light: data.isNocturnal
+          ? `${data.sleepLightLevel}-15`
+          : `0-${data.sleepLightLevel}`,
       },
       moving: {
-        canLook: false,
+        canLook: data.canLookAround,
         walk: {
-          canWalk: true,
-          avoidsLand: false,
+          canWalk: data.canWalk,
+          avoidsLand: data.prefersWater,
         },
         swim: {
           swimSpeed: 0.1,
-          canSwimInWater: true,
-          canBreatheUnderwater: false,
+          canSwimInWater: data.canSwim,
+          canBreatheUnderwater: data.canBreatheUnderwater,
         },
         wanderChance: 1,
       },
     },
     catchRate: data.catchRate,
     maleRatio: data.genderless ? -1 : data.genderRatio / 100,
-    shoulderMountable: false,
+    shoulderMountable: data.canShoulderMount,
 
     baseExperienceYield: data.experienceYield,
     experienceGroup: data.growthRate,
