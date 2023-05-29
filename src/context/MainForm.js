@@ -59,6 +59,9 @@ export function MainFormProvider({ children }) {
       evoStage: 1,
       experienceYield: 100,
       moves: [],
+      inGameScale: 1,
+      hitboxWidth: 1,
+      hitboxHeight: 1,
     },
     validate: {
       name: (v) => (v.length === 0 ? "Required" : null),
