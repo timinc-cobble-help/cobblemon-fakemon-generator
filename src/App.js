@@ -5,6 +5,7 @@ import BasicInfo from "./pages/BasicInfo";
 import BaseStats from "./pages/BaseStates";
 import EvYields from "./pages/EvYields";
 import Moves from "./pages/Moves";
+import Scales from "./pages/Scales";
 
 function App() {
   const { handleDownload, getPoolOfErrors } = useContext(MainFormContext);
@@ -28,6 +29,7 @@ function App() {
           <Tabs.Tab value="baseStats">Base Stats</Tabs.Tab>
           <Tabs.Tab value="evYields">EV Yields</Tabs.Tab>
           <Tabs.Tab value="moves">Moves</Tabs.Tab>
+          <Tabs.Tab value="scales">Scales</Tabs.Tab>
         </Tabs.List>
         <Group align="start" position="center" grow sx={{ flexGrow: 1 }}>
           <Tabs.Panel value="basic">
@@ -41,6 +43,9 @@ function App() {
           </Tabs.Panel>
           <Tabs.Panel value="moves">
             <Moves />
+          </Tabs.Panel>
+          <Tabs.Panel value="scales">
+            <Scales />
           </Tabs.Panel>
         </Group>
         <Button type="submit">Download</Button>

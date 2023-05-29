@@ -61,10 +61,10 @@ export function exportToCobblemon(data) {
       `cobblemon.species.${data.name}.desc2`,
     ],
 
-    baseScale: 1.0,
+    baseScale: data.inGameScale,
     hitbox: {
-      width: 1.0,
-      height: 1.0,
+      width: data.hitboxWidth,
+      height: data.hitboxHeight,
       fixed: false,
     },
     baseFriendship: 50,
