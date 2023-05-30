@@ -7,6 +7,7 @@ import EvYields from "./pages/EvYields";
 import Moves from "./pages/Moves";
 import Scales from "./pages/Scales";
 import Behaviors from "./pages/Behaviors";
+import Drops from "./pages/Drops";
 
 function App() {
   const { handleDownload, getPoolOfErrors } = useContext(MainFormContext);
@@ -32,6 +33,7 @@ function App() {
           <Tabs.Tab value="moves">Moves</Tabs.Tab>
           <Tabs.Tab value="scales">Scales</Tabs.Tab>
           <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
+          <Tabs.Tab value="drops">Drops</Tabs.Tab>
         </Tabs.List>
         <Group align="start" position="center" grow sx={{ flexGrow: 1 }}>
           <Tabs.Panel value="basic">
@@ -51,6 +53,9 @@ function App() {
           </Tabs.Panel>
           <Tabs.Panel value="behaviors">
             <Behaviors />
+          </Tabs.Panel>
+          <Tabs.Panel value="drops">
+            <Drops />
           </Tabs.Panel>
         </Group>
         <Button type="submit">Download</Button>
