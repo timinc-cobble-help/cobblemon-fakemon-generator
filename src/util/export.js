@@ -51,7 +51,16 @@ export function exportToCobblemon(data) {
     experienceGroup: data.growthRate,
     eggCycles: data.hatchRate,
     eggGroups: data.eggGroups,
-
+    drops: {
+      amount: data.dropAmounts,
+      entries: data.drops.map(
+        ({ name, quantityLow, quantityHigh, chance }) => ({
+          item: name,
+          quantityRange: `${quantityLow}-${quantityHigh}`,
+          percentage: chance,
+        })
+      ),
+    },
     moves: [
       data.moves.map(
         ({ type, level, name }) => `${type === "level" ? level : type}:${name}`

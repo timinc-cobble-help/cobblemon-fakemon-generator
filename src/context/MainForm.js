@@ -73,6 +73,8 @@ export function MainFormProvider({ children }) {
       canFly: false,
       canShoulderMount: false,
       canLookAround: false,
+      drops: [],
+      dropAttempts: 1,
     },
     validate: {
       name: (v) => (v.length === 0 ? "Required" : null),
