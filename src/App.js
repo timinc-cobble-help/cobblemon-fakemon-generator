@@ -1,5 +1,14 @@
 import { useContext, useState } from "react";
-import { Group, Stack, Button, Tabs, Text, Modal, Flex } from "@mantine/core";
+import {
+  Group,
+  Stack,
+  Button,
+  Tabs,
+  Text,
+  Modal,
+  Flex,
+  ScrollArea,
+} from "@mantine/core";
 import { MainFormContext, MainFormProvider } from "./context/MainForm";
 import BasicInfo from "./pages/BasicInfo";
 import BaseStats from "./pages/BaseStates";
@@ -43,28 +52,42 @@ function App() {
             <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
             <Tabs.Tab value="drops">Drops</Tabs.Tab>
           </Tabs.List>
-          <Group align="start" position="center" grow sx={{ flexGrow: 1 }}>
-            <Tabs.Panel value="basic">
-              <BasicInfo />
-            </Tabs.Panel>
-            <Tabs.Panel value="baseStats">
-              <BaseStats />
-            </Tabs.Panel>
-            <Tabs.Panel value="evYields">
-              <EvYields />
-            </Tabs.Panel>
-            <Tabs.Panel value="moves">
-              <Moves />
-            </Tabs.Panel>
-            <Tabs.Panel value="scales">
-              <Scales />
-            </Tabs.Panel>
-            <Tabs.Panel value="behaviors">
-              <Behaviors />
-            </Tabs.Panel>
-            <Tabs.Panel value="drops">
-              <Drops />
-            </Tabs.Panel>
+          <Group
+            align="start"
+            position="center"
+            sx={{
+              flexGrow: 1,
+              flexBasis: 0,
+              minHeight: 0,
+              "&>*": {
+                width: "100%",
+                maxWidth: 1000,
+              },
+            }}
+          >
+            <ScrollArea h="100%">
+              <Tabs.Panel value="basic">
+                <BasicInfo />
+              </Tabs.Panel>
+              <Tabs.Panel value="baseStats">
+                <BaseStats />
+              </Tabs.Panel>
+              <Tabs.Panel value="evYields">
+                <EvYields />
+              </Tabs.Panel>
+              <Tabs.Panel value="moves">
+                <Moves />
+              </Tabs.Panel>
+              <Tabs.Panel value="scales">
+                <Scales />
+              </Tabs.Panel>
+              <Tabs.Panel value="behaviors">
+                <Behaviors />
+              </Tabs.Panel>
+              <Tabs.Panel value="drops">
+                <Drops />
+              </Tabs.Panel>
+            </ScrollArea>
           </Group>
           <Group grow>
             <Button type="submit">Download</Button>
