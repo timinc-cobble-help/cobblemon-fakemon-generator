@@ -98,6 +98,13 @@ export function MainFormProvider({ children }) {
     setValues(defaultValues);
   }, []);
 
+  const getFieldValue = useCallback(
+    (keychain) => {
+      return keychain.split(".").reduce((acc, curr) => acc[curr], values);
+    },
+    [values]
+  );
+
   useEffect(() => {
     localStorage.setItem("values", JSON.stringify(values));
   }, [values]);
@@ -172,11 +179,21 @@ export function MainFormProvider({ children }) {
     [errors]
   );
 
+  const handleGetInputProps = useCallback(
+    (keychain) => {
+      const checkbox = typeof getFieldValue(keychain) === "boolean";
+      return getInputProps(keychain, {
+        type: checkbox ? "checkbox" : undefined,
+      });
+    },
+    [getInputProps, getFieldValue]
+  );
+
   return (
     <MainFormContext.Provider
       value={{
         handleDownload: onSubmit((values) => handleDownload(values)),
-        getInputProps,
+        getInputProps: handleGetInputProps,
         values,
         pokemon,
         disableStatLookup,
