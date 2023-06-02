@@ -1,4 +1,10 @@
-import { useCallback, useMemo, useState, createContext } from "react";
+import {
+  useCallback,
+  useMemo,
+  useState,
+  createContext,
+  useEffect,
+} from "react";
 import { useForm } from "@mantine/form";
 import usePokeData from "../data/usePokeData";
 import { camelCase } from "../util/string";
@@ -6,6 +12,51 @@ import downloadFile from "downloadfile-js";
 import { exportToCobblemon } from "../util/export";
 
 export const MainFormContext = createContext();
+
+const defaultValues = {
+  name: "",
+  types: [],
+  abilities: [],
+  hiddenAbility: "",
+  catchRate: 150,
+  hatchRate: 25,
+  genderRatio: 50,
+  genderless: false,
+  eggGroups: [],
+  hp: 1,
+  attack: 1,
+  defense: 1,
+  specialAttack: 1,
+  specialDefense: 1,
+  speed: 1,
+  evHp: 0,
+  evAttack: 0,
+  evDefense: 0,
+  evSpecialAttack: 0,
+  evSpecialDefense: 0,
+  evSpeed: 0,
+  evoStage: 1,
+  experienceYield: 100,
+  moves: [],
+  inGameScale: 1,
+  hitboxWidth: 1,
+  hitboxHeight: 1,
+  canFallAsleep: true,
+  isNocturnal: false,
+  sleepLightLevel: 4,
+  willSleepOnBedWithPlayer: false,
+  canWalk: true,
+  canSwim: true,
+  prefersWater: false,
+  canBreatheUnderwater: false,
+  canFly: false,
+  canShoulderMount: false,
+  canLookAround: false,
+  drops: [],
+  dropAttempts: 1,
+};
+const initialValues =
+  JSON.parse(localStorage.getItem("values")) || defaultValues;
 
 export function MainFormProvider({ children }) {
   const [disableStatLookup, setDisableStatLookup] = useState(false);
@@ -34,48 +85,7 @@ export function MainFormProvider({ children }) {
     insertListItem,
     removeListItem,
   } = useForm({
-    initialValues: {
-      name: "",
-      types: [],
-      abilities: [],
-      hiddenAbility: "",
-      catchRate: 150,
-      hatchRate: 25,
-      genderRatio: 50,
-      genderless: false,
-      eggGroups: [],
-      hp: 1,
-      attack: 1,
-      defense: 1,
-      specialAttack: 1,
-      specialDefense: 1,
-      speed: 1,
-      evHp: 0,
-      evAttack: 0,
-      evDefense: 0,
-      evSpecialAttack: 0,
-      evSpecialDefense: 0,
-      evSpeed: 0,
-      evoStage: 1,
-      experienceYield: 100,
-      moves: [],
-      inGameScale: 1,
-      hitboxWidth: 1,
-      hitboxHeight: 1,
-      canFallAsleep: true,
-      isNocturnal: false,
-      sleepLightLevel: 4,
-      willSleepOnBedWithPlayer: false,
-      canWalk: true,
-      canSwim: true,
-      prefersWater: false,
-      canBreatheUnderwater: false,
-      canFly: false,
-      canShoulderMount: false,
-      canLookAround: false,
-      drops: [],
-      dropAttempts: 1,
-    },
+    initialValues,
     validate: {
       name: (v) => (v.length === 0 ? "Required" : null),
       types: (v) => (v.length === 0 ? "Required" : null),
@@ -83,6 +93,14 @@ export function MainFormProvider({ children }) {
       eggGroups: (v) => (v.length === 0 ? "Required" : null),
     },
   });
+
+  const reset = useCallback(() => {
+    setValues(defaultValues);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("values", JSON.stringify(values));
+  }, [values]);
 
   const autoCalculatedEvYields = useMemo(() => {
     const stats = {
@@ -180,6 +198,7 @@ export function MainFormProvider({ children }) {
         removeListItem,
         moves,
         moveLearnTypes,
+        reset,
       }}
     >
       {children}

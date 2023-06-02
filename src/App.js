@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { Group, Stack, Button, Tabs, Text } from "@mantine/core";
+import { useContext, useState } from "react";
+import { Group, Stack, Button, Tabs, Text, Modal, Flex } from "@mantine/core";
 import { MainFormContext, MainFormProvider } from "./context/MainForm";
 import BasicInfo from "./pages/BasicInfo";
 import BaseStats from "./pages/BaseStates";
@@ -10,57 +10,85 @@ import Behaviors from "./pages/Behaviors";
 import Drops from "./pages/Drops";
 
 function App() {
-  const { handleDownload, getPoolOfErrors } = useContext(MainFormContext);
+  const { handleDownload, getPoolOfErrors, reset } =
+    useContext(MainFormContext);
+  const [confirmReset, setConfirmReset] = useState(false);
+
+  const handleReset = () => {
+    reset();
+    setConfirmReset(false);
+  };
 
   return (
-    <Tabs defaultValue="basic" sx={{ height: "100%" }}>
-      <Stack component="form" onSubmit={handleDownload} h="100%">
-        <Tabs.List>
-          <Tabs.Tab value="basic">
-            <Text
-              color={
-                getPoolOfErrors(["name", "types", "abilities", "eggGroups"])
-                  .length
-                  ? "red"
-                  : undefined
-              }
-            >
-              Basic Info
-            </Text>
-          </Tabs.Tab>
-          <Tabs.Tab value="baseStats">Base Stats</Tabs.Tab>
-          <Tabs.Tab value="evYields">EV Yields</Tabs.Tab>
-          <Tabs.Tab value="moves">Moves</Tabs.Tab>
-          <Tabs.Tab value="scales">Scales</Tabs.Tab>
-          <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
-          <Tabs.Tab value="drops">Drops</Tabs.Tab>
-        </Tabs.List>
-        <Group align="start" position="center" grow sx={{ flexGrow: 1 }}>
-          <Tabs.Panel value="basic">
-            <BasicInfo />
-          </Tabs.Panel>
-          <Tabs.Panel value="baseStats">
-            <BaseStats />
-          </Tabs.Panel>
-          <Tabs.Panel value="evYields">
-            <EvYields />
-          </Tabs.Panel>
-          <Tabs.Panel value="moves">
-            <Moves />
-          </Tabs.Panel>
-          <Tabs.Panel value="scales">
-            <Scales />
-          </Tabs.Panel>
-          <Tabs.Panel value="behaviors">
-            <Behaviors />
-          </Tabs.Panel>
-          <Tabs.Panel value="drops">
-            <Drops />
-          </Tabs.Panel>
-        </Group>
-        <Button type="submit">Download</Button>
-      </Stack>
-    </Tabs>
+    <>
+      <Tabs defaultValue="basic" sx={{ height: "100%" }}>
+        <Stack component="form" onSubmit={handleDownload} h="100%">
+          <Tabs.List>
+            <Tabs.Tab value="basic">
+              <Text
+                color={
+                  getPoolOfErrors(["name", "types", "abilities", "eggGroups"])
+                    .length
+                    ? "red"
+                    : undefined
+                }
+              >
+                Basic Info
+              </Text>
+            </Tabs.Tab>
+            <Tabs.Tab value="baseStats">Base Stats</Tabs.Tab>
+            <Tabs.Tab value="evYields">EV Yields</Tabs.Tab>
+            <Tabs.Tab value="moves">Moves</Tabs.Tab>
+            <Tabs.Tab value="scales">Scales</Tabs.Tab>
+            <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
+            <Tabs.Tab value="drops">Drops</Tabs.Tab>
+          </Tabs.List>
+          <Group align="start" position="center" grow sx={{ flexGrow: 1 }}>
+            <Tabs.Panel value="basic">
+              <BasicInfo />
+            </Tabs.Panel>
+            <Tabs.Panel value="baseStats">
+              <BaseStats />
+            </Tabs.Panel>
+            <Tabs.Panel value="evYields">
+              <EvYields />
+            </Tabs.Panel>
+            <Tabs.Panel value="moves">
+              <Moves />
+            </Tabs.Panel>
+            <Tabs.Panel value="scales">
+              <Scales />
+            </Tabs.Panel>
+            <Tabs.Panel value="behaviors">
+              <Behaviors />
+            </Tabs.Panel>
+            <Tabs.Panel value="drops">
+              <Drops />
+            </Tabs.Panel>
+          </Group>
+          <Group grow>
+            <Button type="submit">Download</Button>
+            <Button color="yellow" onClick={() => setConfirmReset(true)}>
+              Reset
+            </Button>
+          </Group>
+        </Stack>
+      </Tabs>
+      {confirmReset && (
+        <Modal
+          opened={confirmReset}
+          onClose={() => setConfirmReset(false)}
+          title="Are you sure you want to reset?"
+        >
+          <Group grow>
+            <Button color="red" onClick={handleReset}>
+              Reset
+            </Button>
+            <Button onClick={() => setConfirmReset(false)}>Cancel</Button>
+          </Group>
+        </Modal>
+      )}
+    </>
   );
 }
 
