@@ -13,7 +13,7 @@ import { exportToCobblemon } from "../util/export";
 
 export const MainFormContext = createContext();
 
-const initialValues = JSON.parse(localStorage.getItem("values")) || {
+const defaultValues = {
   name: "",
   types: [],
   abilities: [],
@@ -55,6 +55,8 @@ const initialValues = JSON.parse(localStorage.getItem("values")) || {
   drops: [],
   dropAttempts: 1,
 };
+const initialValues =
+  JSON.parse(localStorage.getItem("values")) || defaultValues;
 
 export function MainFormProvider({ children }) {
   const [disableStatLookup, setDisableStatLookup] = useState(false);
@@ -91,6 +93,10 @@ export function MainFormProvider({ children }) {
       eggGroups: (v) => (v.length === 0 ? "Required" : null),
     },
   });
+
+  const reset = useCallback(() => {
+    setValues(defaultValues);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("values", JSON.stringify(values));
@@ -192,6 +198,7 @@ export function MainFormProvider({ children }) {
         removeListItem,
         moves,
         moveLearnTypes,
+        reset,
       }}
     >
       {children}
