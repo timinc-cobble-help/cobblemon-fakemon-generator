@@ -62,5 +62,9 @@
   {
     "value": "damage_taken",
     "label": "Damage Taken"
+  },
+  {
+    "value": "battle_critical_hits",
+    "label": "Critical Hits"
   }
 ]

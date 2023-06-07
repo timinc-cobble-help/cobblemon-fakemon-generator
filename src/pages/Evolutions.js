@@ -328,6 +328,15 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "battle_critical_hits" && (
+                          <NumberInput
+                            label="Minimum Critical Hit Count"
+                            min={0}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.amount`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
