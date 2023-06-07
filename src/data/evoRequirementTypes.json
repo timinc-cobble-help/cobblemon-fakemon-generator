@@ -42,5 +42,9 @@
   {
     "value": "has_move_type",
     "label": "Has Move Type"
+  },
+  {
+    "value": "moon_phase",
+    "label": "Moon Phase"
   }
 ]
