@@ -14,5 +14,9 @@
   {
     "value": "weather",
     "label": "Weather"
+  },
+  {
+    "value": "walked_steps",
+    "label": "Walked Steps"
   }
 ]
