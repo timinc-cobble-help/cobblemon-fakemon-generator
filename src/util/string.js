@@ -10,7 +10,7 @@ export function capitalize(str) {
     str
       .slice(1)
       .replace(
-        /-([a-z])/g,
+        /[-_]([a-z])/g,
         (matchedLetter) => " " + matchedLetter[1].toUpperCase()
       )
   );

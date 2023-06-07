@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Level Up",
+    "value": "level_up"
+  },
+  {
+    "label": "Trade",
+    "value": "trade"
+  },
+  {
+    "label": "Item Interact",
+    "value": "item_interact"
+  },
+  {
+    "label": "Block Click",
+    "value": "block_click"
+  }
+]

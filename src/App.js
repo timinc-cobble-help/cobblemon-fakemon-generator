@@ -17,6 +17,7 @@ import Moves from "./pages/Moves";
 import Scales from "./pages/Scales";
 import Behaviors from "./pages/Behaviors";
 import Drops from "./pages/Drops";
+import Evolutions from "./pages/Evolutions";
 
 function App() {
   const { handleDownload, getPoolOfErrors, reset } =
@@ -51,6 +52,7 @@ function App() {
             <Tabs.Tab value="scales">Scales</Tabs.Tab>
             <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
             <Tabs.Tab value="drops">Drops</Tabs.Tab>
+            <Tabs.Tab value="evolutions">Evolutions</Tabs.Tab>
           </Tabs.List>
           <Group
             align="start"
@@ -86,6 +88,9 @@ function App() {
               </Tabs.Panel>
               <Tabs.Panel value="drops">
                 <Drops />
+              </Tabs.Panel>
+              <Tabs.Panel value="evolutions">
+                <Evolutions />
               </Tabs.Panel>
             </ScrollArea>
           </Group>

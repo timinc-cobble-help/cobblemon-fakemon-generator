@@ -1,0 +1,14 @@
+[
+  {
+    "value": "level",
+    "label": "Level"
+  },
+  {
+    "value": "held_item",
+    "label": "Held Item"
+  },
+  {
+    "value": "biome",
+    "label": "Biome"
+  }
+]

@@ -54,6 +54,7 @@ const defaultValues = {
   canLookAround: false,
   drops: [],
   dropAttempts: 1,
+  evolutions: [],
 };
 const initialValues =
   JSON.parse(localStorage.getItem("values")) || defaultValues;
@@ -73,6 +74,9 @@ export function MainFormProvider({ children }) {
     levellingRates,
     moves,
     moveLearnTypes,
+    evoTypes,
+    evoRequirementTypes,
+    biomes,
   } = usePokeData();
 
   const {
@@ -100,7 +104,8 @@ export function MainFormProvider({ children }) {
 
   const getFieldValue = useCallback(
     (keychain) => {
-      return keychain.split(".").reduce((acc, curr) => acc[curr], values);
+      const keys = keychain.split(".");
+      return keys.reduce((acc, key) => acc[key], values);
     },
     [values]
   );
@@ -189,6 +194,17 @@ export function MainFormProvider({ children }) {
     [getInputProps, getFieldValue]
   );
 
+  const handleInsertListItem = useCallback(
+    (k, v) => {
+      if (!getFieldValue(k)) {
+        setFieldValue(k, [v]);
+        return;
+      }
+      insertListItem(k, v);
+    },
+    [values, setFieldValue, insertListItem]
+  );
+
   return (
     <MainFormContext.Provider
       value={{
@@ -211,11 +227,14 @@ export function MainFormProvider({ children }) {
         setSplitAutoCalc,
         setFieldValue,
         getPoolOfErrors,
-        insertListItem,
+        insertListItem: handleInsertListItem,
         removeListItem,
         moves,
         moveLearnTypes,
         reset,
+        evoTypes,
+        evoRequirementTypes,
+        biomes,
       }}
     >
       {children}
