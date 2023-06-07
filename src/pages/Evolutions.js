@@ -247,7 +247,14 @@ export default function Evolutions() {
                             )}
                           />
                         )}
-
+                        {variant === "party_member" && (
+                          <TextInput
+                            label="Party Member Description"
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.target`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
