@@ -222,6 +222,24 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "use_move" && (
+                          <>
+                            <Select
+                              label="Move"
+                              data={moves}
+                              {...getInputProps(
+                                `evolutions.${i}.requirements.${j}.move`
+                              )}
+                            />
+                            <NumberInput
+                              label="Amount"
+                              {...getInputProps(
+                                `evolutions.${i}.requirements.${j}.amount`
+                              )}
+                            />
+                          </>
+                        )}
+
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
