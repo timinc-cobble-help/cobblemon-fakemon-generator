@@ -9,6 +9,7 @@ import evoTypes from "./evoTypes.json";
 import evoRequirementTypes from "./evoRequirementTypes.json";
 import rawBiomes from "./biomes.json";
 import moveLearnTypes from "./moveLearnTypes.json";
+import weatherTypes from "./weather.json";
 import { camelCase, capitalize } from "../util/string";
 
 export default function usePokeData() {
@@ -120,5 +121,6 @@ export default function usePokeData() {
     evoTypes,
     evoRequirementTypes,
     biomes,
+    weatherTypes,
   };
 }

@@ -2,8 +2,15 @@ function shakeUndefineds(obj) {
   return JSON.stringify(obj, null, 2);
 }
 
+const requirementParsers = {
+  weather: ({ weather }) => ({
+    variant: "weather",
+    isRaining: weather === "raining" || weather === "thundering",
+    isThundering: weather === "thundering",
+  }),
+};
+
 export function exportToCobblemon(data) {
-  console.log(data.evolutions);
   return shakeUndefineds({
     implemented: true,
     name: data.name,
@@ -93,10 +100,14 @@ export function exportToCobblemon(data) {
     evolutions: data.evolutions.map((evolution) => ({
       id: `${data.name}-${evolution.to}-${evolution.variant}`,
       variant: evolution.variant,
-      result: `${[data.name, ...evolution.resultTags].join(" ")}`,
+      result: `${[evolution.to, ...evolution.resultTags].join(" ")}`,
       consumeHeldItem: evolution.consumeHeldItem,
       learnableMoves: evolution.learnableMoves,
-      requirements: evolution.requirements,
+      requirements: evolution.requirements.map((req) =>
+        req.variant in requirementParsers
+          ? requirementParsers[req.variant](req)
+          : req
+      ),
       requiredContext: evolution.requiredContext,
     })),
   });
