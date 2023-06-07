@@ -26,5 +26,9 @@
   {
     "value": "time_range",
     "label": "Time Range"
+  },
+  {
+    "value": "recoil",
+    "label": "Recoil"
   }
 ]

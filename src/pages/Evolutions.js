@@ -239,6 +239,14 @@ export default function Evolutions() {
                             />
                           </>
                         )}
+                        {variant === "recoil" && (
+                          <NumberInput
+                            label="Amount"
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.amount`
+                            )}
+                          />
+                        )}
 
                         <Button
                           onClick={() =>
