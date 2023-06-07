@@ -29,6 +29,7 @@ export default function Evolutions() {
     weatherTypes,
     timeRanges,
     types,
+    moonPhases,
   } = useContext(MainFormContext);
   const [additionalBiomes, setAdditionalBiomes] = useState([]);
 
@@ -270,6 +271,15 @@ export default function Evolutions() {
                             data={types}
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.type`
+                            )}
+                          />
+                        )}
+                        {variant === "moon_phase" && (
+                          <Select
+                            label="Moon Phase"
+                            data={moonPhases}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.moonPhase`
                             )}
                           />
                         )}

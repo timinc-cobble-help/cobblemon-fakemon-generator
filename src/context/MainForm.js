@@ -79,6 +79,7 @@ export function MainFormProvider({ children }) {
     biomes,
     weatherTypes,
     timeRanges,
+    moonPhases,
   } = usePokeData();
 
   const {
@@ -239,6 +240,7 @@ export function MainFormProvider({ children }) {
         biomes,
         weatherTypes,
         timeRanges,
+        moonPhases,
       }}
     >
       {children}
