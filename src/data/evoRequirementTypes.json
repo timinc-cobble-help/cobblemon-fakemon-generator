@@ -50,5 +50,9 @@
   {
     "value": "has_move",
     "label": "Has Move"
+  },
+  {
+    "value": "friendship",
+    "label": "Friendship"
   }
 ]

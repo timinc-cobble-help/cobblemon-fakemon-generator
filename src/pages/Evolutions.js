@@ -292,6 +292,16 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "friendship" && (
+                          <NumberInput
+                            label="Minimum Friendship Level"
+                            min={0}
+                            max={255}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.amount`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
