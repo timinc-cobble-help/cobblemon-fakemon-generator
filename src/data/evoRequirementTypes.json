@@ -18,5 +18,9 @@
   {
     "value": "walked_steps",
     "label": "Walked Steps"
+  },
+  {
+    "value": "use_move",
+    "label": "Use Move"
   }
 ]
