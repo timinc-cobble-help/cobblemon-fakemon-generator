@@ -58,5 +58,9 @@
   {
     "value": "defeat",
     "label": "Defeat Pokemon"
+  },
+  {
+    "value": "damage_taken",
+    "label": "Damage Taken"
   }
 ]

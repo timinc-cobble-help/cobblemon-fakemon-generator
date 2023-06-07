@@ -319,6 +319,15 @@ export default function Evolutions() {
                             />
                           </>
                         )}
+                        {variant === "damage_taken" && (
+                          <NumberInput
+                            label="Minimum Damage Taken"
+                            min={0}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.amount`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
