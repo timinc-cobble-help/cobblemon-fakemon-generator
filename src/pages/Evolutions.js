@@ -28,6 +28,7 @@ export default function Evolutions() {
     biomes,
     weatherTypes,
     timeRanges,
+    types,
   } = useContext(MainFormContext);
   const [additionalBiomes, setAdditionalBiomes] = useState([]);
 
@@ -260,6 +261,15 @@ export default function Evolutions() {
                             label="Pokemon Properties"
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.target`
+                            )}
+                          />
+                        )}
+                        {variant === "has_move_type" && (
+                          <Select
+                            label="Move Types"
+                            data={types}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.type`
                             )}
                           />
                         )}
