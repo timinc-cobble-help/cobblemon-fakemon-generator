@@ -255,6 +255,14 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "properties" && (
+                          <TextInput
+                            label="Pokemon Properties"
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.target`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
