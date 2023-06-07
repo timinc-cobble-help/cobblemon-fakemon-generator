@@ -46,5 +46,9 @@
   {
     "value": "moon_phase",
     "label": "Moon Phase"
+  },
+  {
+    "value": "has_move",
+    "label": "Has Move"
   }
 ]
