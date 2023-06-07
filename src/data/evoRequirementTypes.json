@@ -22,5 +22,9 @@
   {
     "value": "use_move",
     "label": "Use Move"
+  },
+  {
+    "value": "time_range",
+    "label": "Time Range"
   }
 ]
