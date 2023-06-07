@@ -27,6 +27,7 @@ export default function Evolutions() {
     evoRequirementTypes,
     biomes,
     weatherTypes,
+    timeRanges,
   } = useContext(MainFormContext);
   const [additionalBiomes, setAdditionalBiomes] = useState([]);
 
@@ -209,6 +210,15 @@ export default function Evolutions() {
                             label="Amount"
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.amount`
+                            )}
+                          />
+                        )}
+                        {variant === "time_range" && (
+                          <Select
+                            label="Range"
+                            data={timeRanges}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.range`
                             )}
                           />
                         )}

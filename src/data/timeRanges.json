@@ -1,0 +1,38 @@
+[
+  {
+    "value": "day",
+    "label": "Day"
+  },
+  {
+    "value": "night",
+    "label": "Night"
+  },
+  {
+    "value": "noon",
+    "label": "Noon"
+  },
+  {
+    "value": "midnight",
+    "label": "Midnight"
+  },
+  {
+    "value": "morning",
+    "label": "Morning"
+  },
+  {
+    "value": "afternoon",
+    "label": "Afternoon"
+  },
+  {
+    "value": "dawn",
+    "label": "Dawn"
+  },
+  {
+    "value": "dusk",
+    "label": "Dusk"
+  },
+  {
+    "value": "twilight",
+    "label": "Twilight"
+  }
+]

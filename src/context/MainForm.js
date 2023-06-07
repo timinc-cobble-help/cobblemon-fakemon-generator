@@ -78,6 +78,7 @@ export function MainFormProvider({ children }) {
     evoRequirementTypes,
     biomes,
     weatherTypes,
+    timeRanges,
   } = usePokeData();
 
   const {
@@ -237,6 +238,7 @@ export function MainFormProvider({ children }) {
         evoRequirementTypes,
         biomes,
         weatherTypes,
+        timeRanges,
       }}
     >
       {children}
