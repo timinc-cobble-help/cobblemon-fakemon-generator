@@ -38,5 +38,9 @@
   {
     "value": "properties",
     "label": "Properties"
+  },
+  {
+    "value": "has_move_type",
+    "label": "Has Move Type"
   }
 ]
