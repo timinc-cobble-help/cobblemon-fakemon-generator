@@ -5,6 +5,9 @@ import catchRates from "./catchRates.json";
 import hatchRates from "./hatchRates.json";
 import levellingRates from "./levellingRates.json";
 import rawMoves from "./moves.json";
+import evoTypes from "./evoTypes.json";
+import evoRequirementTypes from "./evoRequirementTypes.json";
+import rawBiomes from "./biomes.json";
 import moveLearnTypes from "./moveLearnTypes.json";
 import { camelCase, capitalize } from "../util/string";
 
@@ -92,6 +95,17 @@ export default function usePokeData() {
     [cachedStats]
   );
 
+  const biomes = useMemo(
+    () =>
+      rawBiomes.map((biomeKey) => ({
+        label: capitalize(biomeKey.split(":").pop().split("/").pop())
+          .split(" ")
+          .pop(),
+        value: `#${biomeKey}`,
+      })),
+    []
+  );
+
   return {
     types,
     abilities,
@@ -103,5 +117,8 @@ export default function usePokeData() {
     levellingRates,
     moves,
     moveLearnTypes,
+    evoTypes,
+    evoRequirementTypes,
+    biomes,
   };
 }

@@ -3,6 +3,7 @@ function shakeUndefineds(obj) {
 }
 
 export function exportToCobblemon(data) {
+  console.log(data.evolutions);
   return shakeUndefineds({
     implemented: true,
     name: data.name,
@@ -89,5 +90,14 @@ export function exportToCobblemon(data) {
     },
     height: 1,
     weight: 1,
+    evolutions: data.evolutions.map((evolution) => ({
+      id: `${data.name}-${evolution.to}-${evolution.variant}`,
+      variant: evolution.variant,
+      result: `${[data.name, ...evolution.resultTags].join(" ")}`,
+      consumeHeldItem: evolution.consumeHeldItem,
+      learnableMoves: evolution.learnableMoves,
+      requirements: evolution.requirements,
+      requiredContext: evolution.requiredContext,
+    })),
   });
 }
