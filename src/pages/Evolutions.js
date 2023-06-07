@@ -302,6 +302,23 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "defeat" && (
+                          <>
+                            <TextInput
+                              label="Pokemon Properties"
+                              {...getInputProps(
+                                `evolutions.${i}.requirements.${j}.target`
+                              )}
+                            />
+                            <NumberInput
+                              label="Minmum Defeat Count"
+                              min={0}
+                              {...getInputProps(
+                                `evolutions.${i}.requirements.${j}.amount`
+                              )}
+                            />
+                          </>
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
