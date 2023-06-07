@@ -10,5 +10,9 @@
   {
     "value": "biome",
     "label": "Biome"
+  },
+  {
+    "value": "weather",
+    "label": "Weather"
   }
 ]

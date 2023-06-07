@@ -25,6 +25,7 @@ export default function Evolutions() {
     evoTypes,
     evoRequirementTypes,
     biomes,
+    weatherTypes,
   } = useContext(MainFormContext);
   const [additionalBiomes, setAdditionalBiomes] = useState([]);
 
@@ -190,6 +191,15 @@ export default function Evolutions() {
                             }}
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.biomeCondition`
+                            )}
+                          />
+                        )}
+                        {variant === "weather" && (
+                          <Select
+                            label="Weather"
+                            data={weatherTypes}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.weather`
                             )}
                           />
                         )}

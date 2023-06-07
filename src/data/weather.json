@@ -1,0 +1,14 @@
+[
+  {
+    "value": "clear",
+    "label": "Clear"
+  },
+  {
+    "value": "raining",
+    "label": "Raining"
+  },
+  {
+    "value": "thundering",
+    "label": "Thundering"
+  }
+]
