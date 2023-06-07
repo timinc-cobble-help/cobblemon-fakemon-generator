@@ -66,5 +66,9 @@
   {
     "value": "battle_critical_hits",
     "label": "Critical Hits"
+  },
+  {
+    "value": "attack_defence_ratio",
+    "label": "Attack/Defence Ratio"
   }
 ]
