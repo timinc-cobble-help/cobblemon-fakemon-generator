@@ -283,6 +283,15 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "has_move" && (
+                          <Select
+                            label="Move"
+                            data={moves}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.move`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
