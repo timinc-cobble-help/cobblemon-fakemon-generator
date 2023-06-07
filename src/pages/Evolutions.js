@@ -337,6 +337,19 @@ export default function Evolutions() {
                             )}
                           />
                         )}
+                        {variant === "attack_defence_ratio" && (
+                          <Select
+                            label="Which is higher?"
+                            data={[
+                              { value: "ATTACK_HIGHER", label: "Attack" },
+                              { value: "DEFENCE_HIGHER", label: "Defense" },
+                              { value: "EQUAL", label: "Equal" },
+                            ]}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.ratio`
+                            )}
+                          />
+                        )}
                         <Button
                           onClick={() =>
                             removeListItem(`evolutions.${i}.requirements`, j)
