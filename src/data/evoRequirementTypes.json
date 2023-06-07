@@ -30,5 +30,9 @@
   {
     "value": "recoil",
     "label": "Recoil"
+  },
+  {
+    "value": "party_member",
+    "label": "Party Member"
   }
 ]
