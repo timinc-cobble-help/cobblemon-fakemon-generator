@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   MultiSelect,
+  NumberInput,
   Select,
   Stack,
   Switch,
@@ -150,7 +151,7 @@ export default function Evolutions() {
                           )}
                         />
                         {variant === "level" && (
-                          <TextInput
+                          <NumberInput
                             label="Level"
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.minLevel`
@@ -200,6 +201,14 @@ export default function Evolutions() {
                             data={weatherTypes}
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.weather`
+                            )}
+                          />
+                        )}
+                        {variant === "walked_steps" && (
+                          <NumberInput
+                            label="Amount"
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.amount`
                             )}
                           />
                         )}
