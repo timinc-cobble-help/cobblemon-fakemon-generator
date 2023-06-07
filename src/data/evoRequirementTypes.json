@@ -34,5 +34,9 @@
   {
     "value": "party_member",
     "label": "Party Member"
+  },
+  {
+    "value": "properties",
+    "label": "Properties"
   }
 ]
