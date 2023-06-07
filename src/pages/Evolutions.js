@@ -311,7 +311,7 @@ export default function Evolutions() {
                               )}
                             />
                             <NumberInput
-                              label="Minmum Defeat Count"
+                              label="Minimum Defeat Count"
                               min={0}
                               {...getInputProps(
                                 `evolutions.${i}.requirements.${j}.amount`
