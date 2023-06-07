@@ -54,5 +54,9 @@
   {
     "value": "friendship",
     "label": "Friendship"
+  },
+  {
+    "value": "defeat",
+    "label": "Defeat Pokemon"
   }
 ]
