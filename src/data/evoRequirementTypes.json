@@ -88,5 +88,10 @@
     "value": "attack_defence_ratio",
     "label": "Attack/Defence Ratio",
     "reusable": false
+  },
+  {
+    "value": "world",
+    "label": "World",
+    "reusable": false
   }
 ]

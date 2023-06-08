@@ -30,6 +30,7 @@ export default function Evolutions() {
     timeRanges,
     types,
     moonPhases,
+    worlds,
   } = useContext(MainFormContext);
   const [additionalBiomes, setAdditionalBiomes] = useState([]);
 
@@ -348,6 +349,15 @@ export default function Evolutions() {
                             ]}
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.ratio`
+                            )}
+                          />
+                        )}
+                        {variant === "world" && (
+                          <Select
+                            label="World"
+                            data={worlds}
+                            {...getInputProps(
+                              `evolutions.${i}.requirements.${j}.identifier`
                             )}
                           />
                         )}

@@ -1,0 +1,14 @@
+[
+  {
+    "value": "minecraft:overworld",
+    "label": "Overworld"
+  },
+  {
+    "value": "minecraft:the_nether",
+    "label": "Nether"
+  },
+  {
+    "value": "minecraft:the_end",
+    "label": "End"
+  }
+]
