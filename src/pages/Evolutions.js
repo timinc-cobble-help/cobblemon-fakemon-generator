@@ -144,6 +144,7 @@ export default function Evolutions() {
                           label="Requirement Type"
                           data={evoRequirementTypes.filter(
                             (evoReqType) =>
+                              evoReqType.reusable ||
                               !requirements.some(
                                 (req, k) =>
                                   req.variant === evoReqType.value && k !== j

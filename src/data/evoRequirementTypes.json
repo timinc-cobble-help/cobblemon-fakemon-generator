@@ -1,74 +1,92 @@
 [
   {
     "value": "level",
-    "label": "Level"
+    "label": "Level",
+    "reusable": false
   },
   {
     "value": "held_item",
-    "label": "Held Item"
+    "label": "Held Item",
+    "reusable": false
   },
   {
     "value": "biome",
-    "label": "Biome"
+    "label": "Biome",
+    "reusable": false
   },
   {
     "value": "weather",
-    "label": "Weather"
+    "label": "Weather",
+    "reusable": false
   },
   {
     "value": "walked_steps",
-    "label": "Walked Steps"
+    "label": "Walked Steps",
+    "reusable": false
   },
   {
     "value": "use_move",
-    "label": "Use Move"
+    "label": "Use Move",
+    "reusable": true
   },
   {
     "value": "time_range",
-    "label": "Time Range"
+    "label": "Time Range",
+    "reusable": false
   },
   {
     "value": "recoil",
-    "label": "Recoil"
+    "label": "Recoil",
+    "reusable": false
   },
   {
     "value": "party_member",
-    "label": "Party Member"
+    "label": "Party Member",
+    "reusable": true
   },
   {
     "value": "properties",
-    "label": "Properties"
+    "label": "Properties",
+    "reusable": false
   },
   {
     "value": "has_move_type",
-    "label": "Has Move Type"
+    "label": "Has Move Type",
+    "reusable": true
   },
   {
     "value": "moon_phase",
-    "label": "Moon Phase"
+    "label": "Moon Phase",
+    "reusable": false
   },
   {
     "value": "has_move",
-    "label": "Has Move"
+    "label": "Has Move",
+    "reusable": true
   },
   {
     "value": "friendship",
-    "label": "Friendship"
+    "label": "Friendship",
+    "reusable": false
   },
   {
     "value": "defeat",
-    "label": "Defeat Pokemon"
+    "label": "Defeat Pokemon",
+    "reusable": true
   },
   {
     "value": "damage_taken",
-    "label": "Damage Taken"
+    "label": "Damage Taken",
+    "reusable": false
   },
   {
     "value": "battle_critical_hits",
-    "label": "Critical Hits"
+    "label": "Critical Hits",
+    "reusable": false
   },
   {
     "value": "attack_defence_ratio",
-    "label": "Attack/Defence Ratio"
+    "label": "Attack/Defence Ratio",
+    "reusable": false
   }
 ]
