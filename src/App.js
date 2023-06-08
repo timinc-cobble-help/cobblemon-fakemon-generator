@@ -6,8 +6,8 @@ import {
   Tabs,
   Text,
   Modal,
-  Flex,
   ScrollArea,
+  MantineProvider,
 } from "@mantine/core";
 import { MainFormContext, MainFormProvider } from "./context/MainForm";
 import BasicInfo from "./pages/BasicInfo";
@@ -107,6 +107,8 @@ function App() {
           opened={confirmReset}
           onClose={() => setConfirmReset(false)}
           title="Are you sure you want to reset?"
+          centered
+          styles={{ inner: { width: "90vw" } }}
         >
           <Group grow>
             <Button color="red" onClick={handleReset}>
@@ -122,8 +124,10 @@ function App() {
 
 export default function WrappedApp() {
   return (
-    <MainFormProvider>
-      <App />
-    </MainFormProvider>
+    <MantineProvider withNormalizeCSS withGlobalStyles>
+      <MainFormProvider>
+        <App />
+      </MainFormProvider>
+    </MantineProvider>
   );
 }
