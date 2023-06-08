@@ -165,13 +165,12 @@ export function MainFormProvider({ children }) {
   );
 
   const handleDownload = useCallback(
-    (values) => {
+    async (values) => {
       const data = autoCalculate
         ? { ...values, ...autoCalculatedEvYields }
         : values;
-      const exportData = exportToCobblemon(data);
-      console.log(data, JSON.parse(exportData));
-      downloadFile(exportData, `${values.name}.json`);
+      const exportData = await exportToCobblemon(data);
+      downloadFile(exportData, `${values.name}.zip`, "application/zip");
     },
     [autoCalculate, autoCalculatedEvYields]
   );
