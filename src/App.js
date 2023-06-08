@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { MainFormContext, MainFormProvider } from "./context/MainForm";
 import BasicInfo from "./pages/BasicInfo";
-import BaseStats from "./pages/BaseStates";
+import BaseStats from "./pages/BaseStats";
 import EvYields from "./pages/EvYields";
 import Moves from "./pages/Moves";
 import Scales from "./pages/Scales";
