@@ -1,3 +1,5 @@
+import JSZip from "jszip";
+
 function shakeUndefineds(obj) {
   return JSON.stringify(obj, null, 2);
 }
@@ -10,7 +12,7 @@ const requirementParsers = {
   }),
 };
 
-export function exportToCobblemon(data) {
+function generateSpeciesFiles(data) {
   return shakeUndefineds({
     implemented: true,
     name: data.name,
@@ -111,4 +113,16 @@ export function exportToCobblemon(data) {
       requiredContext: evolution.requiredContext,
     })),
   });
+}
+
+export function exportToCobblemon(data) {
+  const zip = new JSZip();
+  zip.file(
+    `data/cobblemon/species/${data.name}.json`,
+    generateSpeciesFiles(data),
+    {
+      createFolders: true,
+    }
+  );
+  return zip.generateAsync({ type: "blob" });
 }
