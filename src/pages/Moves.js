@@ -4,11 +4,11 @@ import {
   Button,
   Card,
   Center,
-  Flex,
   NumberInput,
   Select,
   Stack,
   Title,
+  Group,
 } from "@mantine/core";
 import { MainFormContext } from "../context/MainForm";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
@@ -49,29 +49,22 @@ export default function Moves() {
                 ?
               </Avatar>
             </Center>
-            {type === "level" ? (
-              <Flex gap="xs">
-                <Select
-                  data={moveLearnTypes}
-                  itemComponent={SelectItem}
-                  value={type}
-                  onChange={(val) => setFieldValue(`moves.${i}.type`, val)}
-                />
-                <NumberInput
-                  value={level}
-                  min={0}
-                  max={100}
-                  onChange={(val) => setFieldValue(`moves.${i}.level`, val)}
-                />
-              </Flex>
-            ) : (
+            <Group gap="xs" grow>
               <Select
                 data={moveLearnTypes}
                 itemComponent={SelectItem}
                 value={type}
                 onChange={(val) => setFieldValue(`moves.${i}.type`, val)}
               />
-            )}
+              {type === "level" && (
+                <NumberInput
+                  value={level}
+                  min={0}
+                  max={100}
+                  onChange={(val) => setFieldValue(`moves.${i}.level`, val)}
+                />
+              )}
+            </Group>
             <Select
               data={moves}
               value={name}
