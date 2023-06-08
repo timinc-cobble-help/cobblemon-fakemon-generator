@@ -12,6 +12,7 @@ import moveLearnTypes from "./moveLearnTypes.json";
 import weatherTypes from "./weather.json";
 import timeRanges from "./timeRanges.json";
 import moonPhases from "./moonPhases.json";
+import worlds from "./worlds.json";
 import { camelCase, capitalize } from "../util/string";
 
 export default function usePokeData() {
@@ -126,5 +127,6 @@ export default function usePokeData() {
     weatherTypes,
     timeRanges,
     moonPhases,
+    worlds,
   };
 }
