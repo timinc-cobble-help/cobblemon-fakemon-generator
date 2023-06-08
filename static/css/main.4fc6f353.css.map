@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.4fc6f353.css","mappings":"AAAA,MACE,YAAa,CACb,eAAgB,CAChB,YACF","sources":["styles.css"],"sourcesContent":["#root {\r\n  height: 100vh;\r\n  overflow: hidden;\r\n  padding: 1rem;\r\n}\r\n"],"names":[],"sourceRoot":""}
