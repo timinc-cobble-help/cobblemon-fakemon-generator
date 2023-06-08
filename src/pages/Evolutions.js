@@ -166,7 +166,7 @@ export default function Evolutions() {
                             <TextInput
                               label="Item"
                               {...getInputProps(
-                                `evolutions.${i}.requirements.${j}.item`
+                                `evolutions.${i}.requirements.${j}.itemCondition`
                               )}
                             />
                             <Switch
