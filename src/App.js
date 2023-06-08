@@ -108,7 +108,6 @@ function App() {
           onClose={() => setConfirmReset(false)}
           title="Are you sure you want to reset?"
           centered
-          styles={{ inner: { width: "90vw" } }}
         >
           <Group grow>
             <Button color="red" onClick={handleReset}>
