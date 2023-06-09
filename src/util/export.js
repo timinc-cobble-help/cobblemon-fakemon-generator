@@ -50,6 +50,10 @@ function generateSpeciesFiles(data) {
           canSwimInWater: data.canSwim,
           canBreatheUnderwater: data.canBreatheUnderwater,
         },
+        fly: {
+          canFly: data.canFly,
+          flySpeedHorizontal: 0.3,
+        },
         wanderChance: 1,
       },
     },
