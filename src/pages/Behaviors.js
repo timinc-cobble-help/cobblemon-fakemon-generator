@@ -1,32 +1,10 @@
 import { useContext } from "react";
-import {
-  Stack,
-  TextInput,
-  MultiSelect,
-  Select,
-  Flex,
-  Checkbox,
-  Title,
-} from "@mantine/core";
-import { IconGenderMale, IconGenderFemale } from "@tabler/icons-react";
-import Slider from "../components/TSlider";
-import SelectedItem from "../components/SelectedItem";
-import SelectItem from "../components/SelectItem";
+import { Stack, Checkbox, Title } from "@mantine/core";
 import { MainFormContext } from "../context/MainForm";
-import { lowercaseAlpha } from "../util/string";
 import TSlider from "../components/TSlider";
 
 export default function Behaviors() {
-  const {
-    getInputProps,
-    types,
-    abilities,
-    catchRates,
-    hatchRates,
-    values,
-    eggGroups,
-    setFieldValue,
-  } = useContext(MainFormContext);
+  const { getInputProps, values } = useContext(MainFormContext);
 
   return (
     <Stack>

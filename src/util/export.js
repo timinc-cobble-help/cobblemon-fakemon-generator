@@ -38,6 +38,7 @@ function generateSpeciesFiles(data) {
         light: data.isNocturnal
           ? `${data.sleepLightLevel}-15`
           : `0-${data.sleepLightLevel}`,
+        willSleepOnBed: data.willSleepOnBedWithPlayer,
       },
       moving: {
         canLook: data.canLookAround,
@@ -46,7 +47,7 @@ function generateSpeciesFiles(data) {
           avoidsLand: data.prefersWater,
         },
         swim: {
-          swimSpeed: 0.1,
+          swimSpeed: 0.3,
           canSwimInWater: data.canSwim,
           canBreatheUnderwater: data.canBreatheUnderwater,
         },
@@ -66,7 +67,7 @@ function generateSpeciesFiles(data) {
     eggCycles: data.hatchRate,
     eggGroups: data.eggGroups,
     drops: {
-      amount: data.dropAmounts,
+      amount: data.dropAttempts,
       entries: data.drops.map(
         ({ name, quantityLow, quantityHigh, chance }) => ({
           item: name,

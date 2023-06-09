@@ -34,7 +34,7 @@ export default function Drops() {
   return (
     <Stack>
       <Title>Drops</Title>
-      {values.drops.map(({ name, quantityLow, quantityHigh, chance }, i) => (
+      {values.drops.map(({ quantityLow, quantityHigh, chance }, i) => (
         <Card
           withBorder
           shadow="sm"
