@@ -13,11 +13,11 @@ import weatherTypes from "./weather.json";
 import timeRanges from "./timeRanges.json";
 import moonPhases from "./moonPhases.json";
 import worlds from "./worlds.json";
+import eggGroups from "./eggGroups.json";
 import { camelCase, capitalize } from "../util/string";
 
 export default function usePokeData() {
   const [abilities, setAbilities] = useState([]);
-  const [eggGroups, setEggGroups] = useState([]);
   const [pokemon, setPokemon] = useState([]);
   const [cachedStats, setCachedStats] = useState({});
 
@@ -35,17 +35,6 @@ export default function usePokeData() {
       );
     }
     fetchAbilities();
-  }, []);
-
-  useEffect(() => {
-    async function fetchEggGroups() {
-      const response = await fetch("https://pokeapi.co/api/v2/egg-group");
-      const data = await response.json();
-      setEggGroups(
-        data.results.map((e) => ({ value: e.name, label: capitalize(e.name) }))
-      );
-    }
-    fetchEggGroups();
   }, []);
 
   useEffect(() => {
