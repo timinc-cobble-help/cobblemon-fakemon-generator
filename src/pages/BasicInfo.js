@@ -36,8 +36,6 @@ export default function BasicInfo() {
       <MultiSelect
         label="Types"
         data={types}
-        itemComponent={SelectItem}
-        valueComponent={SelectedItem}
         clearable
         searchable
         maxSelectedValues={2}
