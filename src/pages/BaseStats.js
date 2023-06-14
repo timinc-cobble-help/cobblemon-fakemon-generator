@@ -40,10 +40,7 @@ export default function BaseStats() {
       </Text>
       <Select
         label="Copy Existing"
-        data={pokemon.map((e) => ({
-          value: e.name,
-          label: e.name,
-        }))}
+        data={pokemon}
         searchable
         disabled={disableStatLookup}
         onChange={handleStatLookup}

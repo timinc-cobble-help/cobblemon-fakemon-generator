@@ -14,6 +14,7 @@ import {
 import { MainFormContext } from "../context/MainForm";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import SelectItem from "../components/SelectItem";
+import SelectedItem from "../components/SelectedItem";
 
 export default function Evolutions() {
   const {
@@ -224,6 +225,7 @@ export default function Evolutions() {
                             {...getInputProps(
                               `evolutions.${i}.requirements.${j}.range`
                             )}
+                            itemComponent={SelectItem}
                           />
                         )}
                         {variant === "use_move" && (
