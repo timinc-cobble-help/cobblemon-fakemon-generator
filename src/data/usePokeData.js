@@ -12,7 +12,8 @@ import { capitalize } from "../util/string";
 
 const eggGroupRegex = /([0-9A-Z_]+)\(\"(.+)\"\),/;
 const moonPhaseRegex = /([A-Z_]+)[,;]/;
-const timeRangeRegex = /"([a-z]+)" to TimeRange\(([0-9]+)\.\.([0-9]+)\)/;
+const timeRangeRegex =
+  /"([a-z]+)" to TimeRange\(((?:[0-9]+\.\.[0-9]+(?:, )*)*)\)/;
 
 export default function usePokeData() {
   const [langData, setLangData] = useState(null);
@@ -128,13 +129,16 @@ export default function usePokeData() {
             return {
               value: match[1],
               label: capitalize(match[1].toLowerCase()),
-              description: `${match[2]} to ${match[3]}`,
-              start: +match[2],
-              end: +match[3],
+              description: match[2]
+                .split(", ")
+                .map((e) => e.match(/(\d+)\.\.(\d+)/))
+                .sort((a, b) => +a[1] - +b[1])
+                .map((e) => `${e[1]} to ${e[2]}`)
+                .join(", "),
             };
           })
           .filter(({ value }) => value !== "any")
-          .sort((a, b) => a.start - b.start)
+          .sort((a, b) => (a.value > b.value ? 1 : -1))
       );
     }
     fetchTimeRanges();
