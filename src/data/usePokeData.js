@@ -222,7 +222,12 @@ export default function usePokeData() {
       const matchingPokemon = await huntForPokemon(pokemonName);
       const data = await fetchFile(matchingPokemon.path);
       setCachedPokemonData((prev) => ({ ...prev, [pokemonName]: data }));
-      return data.baseStats;
+      return {
+        ...data.baseStats,
+        defense: data.baseStats.defence,
+        specialAttack: data.baseStats.special_attack,
+        specialDefense: data.baseStats.special_defence,
+      };
     },
     [cachedPokemonData]
   );
