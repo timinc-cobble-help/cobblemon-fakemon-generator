@@ -9,6 +9,7 @@ import weatherTypes from "./weather.json";
 import worlds from "./worlds.json";
 import { fetchDirectory, fetchFile } from "./gitlab";
 import { capitalize } from "../util/string";
+import { useLocalStorage } from "@mantine/hooks";
 
 const eggGroupRegex = /([0-9A-Z_]+)\(\"(.+)\"\),/;
 const moonPhaseRegex = /([A-Z_]+)[,;]/;
@@ -16,13 +17,34 @@ const timeRangeRegex =
   /"([a-z]+)" to TimeRange\(((?:[0-9]+\.\.[0-9]+(?:, )*)*)\)/;
 
 export default function usePokeData() {
-  const [langData, setLangData] = useState(null);
-  const [cachedPokemonRefs, setCachedPokemonRefs] = useState([]);
-  const [cachedPokemonData, setCachedPokemonData] = useState({});
-  const [biomes, setBiomes] = useState([]);
-  const [eggGroups, setEggGroups] = useState([]);
-  const [moonPhases, setMoonPhases] = useState([]);
-  const [timeRanges, setTimeRanges] = useState([]);
+  const [langData, setLangData] = useLocalStorage({
+    key: "langData",
+    defaultValue: null,
+  });
+  const [cachedPokemonRefs, setCachedPokemonRefs] = useLocalStorage({
+    key: "cachedPokemonRefs",
+    defaultValue: [],
+  });
+  const [cachedPokemonData, setCachedPokemonData] = useLocalStorage({
+    key: "cachedPokemonData",
+    defaultValue: {},
+  });
+  const [biomes, setBiomes] = useLocalStorage({
+    key: "biomes",
+    defaultValue: [],
+  });
+  const [eggGroups, setEggGroups] = useLocalStorage({
+    key: "eggGroups",
+    defaultValue: [],
+  });
+  const [moonPhases, setMoonPhases] = useLocalStorage({
+    key: "moonPhases",
+    defaultValue: [],
+  });
+  const [timeRanges, setTimeRanges] = useLocalStorage({
+    key: "timeRanges",
+    defaultValue: [],
+  });
 
   const huntForPokemon = useCallback(
     async (pokemonName) => {
