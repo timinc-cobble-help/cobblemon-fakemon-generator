@@ -16,7 +16,7 @@ function generateSpeciesFiles(data) {
   return shakeUndefineds({
     implemented: true,
     name: data.name,
-    nationalPokedexNumber: 9999,
+    nationalPokedexNumber: data.nationalPokedexNumber,
     primaryType: data.types[0],
     secondaryType: data.types[1],
     abilities: [

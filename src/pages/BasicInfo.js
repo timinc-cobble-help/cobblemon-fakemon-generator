@@ -6,6 +6,7 @@ import {
   Select,
   Flex,
   Checkbox,
+  NumberInput,
 } from "@mantine/core";
 import { IconGenderMale, IconGenderFemale } from "@tabler/icons-react";
 import Slider from "../components/TSlider";
@@ -32,6 +33,10 @@ export default function BasicInfo() {
         label="Name"
         {...getInputProps("name")}
         onChange={(e) => setFieldValue("name", lowercaseAlpha(e.target.value))}
+      />
+      <NumberInput
+        label="Pokedex Number"
+        {...getInputProps("nationalPokedexNumber")}
       />
       <MultiSelect
         label="Types"

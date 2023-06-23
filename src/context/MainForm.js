@@ -56,6 +56,7 @@ const defaultValues = {
   dropAttempts: 1,
   evolutions: [],
   canLookAround: true,
+  nationalPokedexNumber: 9999,
 };
 const initialValues =
   JSON.parse(localStorage.getItem("values")) || defaultValues;
