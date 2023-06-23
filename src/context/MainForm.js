@@ -55,6 +55,7 @@ const defaultValues = {
   drops: [],
   dropAttempts: 1,
   evolutions: [],
+  canLookAround: true,
 };
 const initialValues =
   JSON.parse(localStorage.getItem("values")) || defaultValues;
