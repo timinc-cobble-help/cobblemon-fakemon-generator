@@ -46,7 +46,7 @@ export default function Drops() {
             <TextInput
               label="Item ID"
               placeholder="minecraft:string"
-              onChange={(val) => setFieldValue(`drops.${i}.name`, val)}
+              onChange={(e) => setFieldValue(`drops.${i}.name`, e.target.value)}
             />
             <Text>Quantity</Text>
             <Flex gap="xs">
