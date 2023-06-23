@@ -11,7 +11,7 @@ import { fetchDirectory, fetchFile } from "./gitlab";
 import { capitalize } from "../util/string";
 import { useLocalStorage } from "@mantine/hooks";
 
-const eggGroupRegex = /([0-9A-Z_]+)\(\"(.+)\"\),/;
+const eggGroupRegex = /([0-9A-Z_]+)\(\"(.+)\"\),*/;
 const moonPhaseRegex = /([A-Z_]+)[,;]/;
 const timeRangeRegex =
   /"([a-z]+)" to TimeRange\(((?:[0-9]+\.\.[0-9]+(?:, )*)*)\)/;
