@@ -129,5 +129,18 @@ export function exportToCobblemon(data) {
       createFolders: true,
     }
   );
+  zip.file(
+    "pack.mcmeta",
+    JSON.stringify(
+      {
+        pack: {
+          pack_format: 10,
+          description: `Datapack for ${data.name}.`,
+        },
+      },
+      null,
+      2
+    )
+  );
   return zip.generateAsync({ type: "blob" });
 }
