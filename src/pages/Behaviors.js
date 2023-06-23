@@ -37,10 +37,6 @@ export default function Behaviors() {
       {values.canSwim && (
         <>
           <Checkbox
-            label="Does this monster prefer water?"
-            {...getInputProps("canSwim")}
-          />
-          <Checkbox
             label="Can this monster breathe underwater?"
             {...getInputProps("canBreatheUnderwater")}
           />
