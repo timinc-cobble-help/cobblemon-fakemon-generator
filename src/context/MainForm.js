@@ -57,6 +57,8 @@ const defaultValues = {
   evolutions: [],
   canLookAround: true,
   nationalPokedexNumber: 9999,
+  height: 1,
+  weight: 1,
 };
 const initialValues =
   JSON.parse(localStorage.getItem("values")) || defaultValues;

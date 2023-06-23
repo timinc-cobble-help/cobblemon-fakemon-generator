@@ -38,6 +38,8 @@ export default function BasicInfo() {
         label="Pokedex Number"
         {...getInputProps("nationalPokedexNumber")}
       />
+      <NumberInput label="Height" {...getInputProps("height")} />
+      <NumberInput label="Weight" {...getInputProps("weight")} />
       <MultiSelect
         label="Types"
         data={types}
