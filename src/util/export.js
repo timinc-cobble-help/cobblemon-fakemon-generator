@@ -102,8 +102,8 @@ function generateSpeciesFiles(data) {
       special_defence: data.evSpecialDefense,
       speed: data.evSpeed,
     },
-    height: 1,
-    weight: 1,
+    height: data.height,
+    weight: data.weight,
     evolutions: data.evolutions.map((evolution) => ({
       id: `${data.name}-${evolution.to}-${evolution.variant}`,
       variant: evolution.variant,
