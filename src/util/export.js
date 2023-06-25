@@ -76,11 +76,9 @@ function generateSpeciesFiles(data) {
         })
       ),
     },
-    moves: [
-      data.moves.map(
-        ({ type, level, name }) => `${type === "level" ? level : type}:${name}`
-      ),
-    ],
+    moves: data.moves.map(
+      ({ type, level, name }) => `${type === "level" ? level : type}:${name}`
+    ),
     labels: ["custom"],
     pokedex: [
       `cobblemon.species.${data.name}.desc1`,
