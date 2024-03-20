@@ -39,6 +39,7 @@ function generateSpeciesFiles(data) {
           ? `${data.sleepLightLevel}-15`
           : `0-${data.sleepLightLevel}`,
         willSleepOnBed: data.willSleepOnBedWithPlayer,
+        times: data.isNocturnal ? "day" : "night"
       },
       moving: {
         canLook: data.canLookAround,
