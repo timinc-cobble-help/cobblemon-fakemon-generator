@@ -49,6 +49,7 @@ export default function BaseStats() {
         label="Leveling Rate"
         data={levellingRates}
         itemComponent={SelectItem}
+        {...getInputProps("growthRate")}
       />
     </Stack>
   );
