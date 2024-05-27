@@ -29,31 +29,39 @@ function App() {
     setConfirmReset(false);
   };
 
+  const handleUpdateData = () => {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <>
       <Tabs defaultValue="basic" sx={{ height: "100%" }}>
         <Stack component="form" onSubmit={handleDownload} h="100%">
-          <Tabs.List>
-            <Tabs.Tab value="basic">
-              <Text
-                color={
-                  getPoolOfErrors(["name", "types", "abilities", "eggGroups"])
-                    .length
-                    ? "red"
-                    : undefined
-                }
-              >
-                Basic Info
-              </Text>
-            </Tabs.Tab>
-            <Tabs.Tab value="baseStats">Base Stats</Tabs.Tab>
-            <Tabs.Tab value="evYields">EV Yields</Tabs.Tab>
-            <Tabs.Tab value="moves">Moves</Tabs.Tab>
-            <Tabs.Tab value="scales">Scales</Tabs.Tab>
-            <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
-            <Tabs.Tab value="drops">Drops</Tabs.Tab>
-            <Tabs.Tab value="evolutions">Evolutions</Tabs.Tab>
-          </Tabs.List>
+          <Group>
+            <Tabs.List sx={{flexGrow: 1}}>
+              <Tabs.Tab value="basic">
+                <Text
+                  color={
+                    getPoolOfErrors(["name", "types", "abilities", "eggGroups"])
+                      .length
+                      ? "red"
+                      : undefined
+                  }
+                >
+                  Basic Info
+                </Text>
+              </Tabs.Tab>
+              <Tabs.Tab value="baseStats">Base Stats</Tabs.Tab>
+              <Tabs.Tab value="evYields">EV Yields</Tabs.Tab>
+              <Tabs.Tab value="moves">Moves</Tabs.Tab>
+              <Tabs.Tab value="scales">Scales</Tabs.Tab>
+              <Tabs.Tab value="behaviors">Behaviors</Tabs.Tab>
+              <Tabs.Tab value="drops">Drops</Tabs.Tab>
+              <Tabs.Tab value="evolutions">Evolutions</Tabs.Tab>
+            </Tabs.List>
+            <Button onClick={handleUpdateData}>Update Data</Button>
+          </Group>
           <Group
             align="start"
             position="center"
