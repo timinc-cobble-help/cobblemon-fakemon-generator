@@ -20,9 +20,9 @@ function generateSpeciesFiles(data) {
     primaryType: data.types[0],
     secondaryType: data.types[1],
     abilities: [
-      ...data.abilities,
+      ...data.abilities.filter(e => e),
       data.hiddenAbility ? `h:${data.hiddenAbility}` : undefined,
-    ],
+    ].filter(e => e),
     baseStats: {
       hp: data.hp,
       attack: data.attack,
